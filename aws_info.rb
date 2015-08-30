@@ -13,6 +13,10 @@ credentials = Aws::Credentials.new(aws_credentials['access_key_id'], aws_credent
 # READ the config files from a
 regions =  aws_config['regions'] || []
 
-ec2_info = Ec2Info.new(regions,credentials)
+#Get User info
+iam_client = Aws::IAM::Client.new(region: regions[0], credentials: credentials)
+user = iam_client.get_user().data.user
+
+ec2_info = Ec2Info.new(regions,credentials,user)
 ec2_info.print_ec2info
 
