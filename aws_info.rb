@@ -12,7 +12,7 @@ aws_credentials = aws_config['credentials']
 
 credentials = Aws::Credentials.new(aws_credentials['access_key_id'], aws_credentials['secret_access_key'])
 
-# READ the config files from a
+# read regions from config
 regions =  aws_config['regions'] || []
 
 #Get User info
